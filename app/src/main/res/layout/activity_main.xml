@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layoutMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_smoke"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="@string/my_e_loading"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_Exit"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_exit"
+                android:contentDescription="@string/close"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/current_balance"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:hint="@string/loading"
+                        android:textColor="#791E94"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/container"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:translationZ="5dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewLogo"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/ic_number"
+                        android:backgroundTint="@color/black"
+                        android:contentDescription="@string/my_e_loading" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/buy_load_for"
+                        android:textColor="@color/black"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:hint="@string/customer_number"
+                        android:textColorHint="@color/gray"
+                        android:theme="@style/Theme.MaterialComponents"
+                        app:boxStrokeColor="@color/black"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="11"
+                        app:counterTextColor="@color/black"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/black"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/black"
+                        app:startIconDrawable="@drawable/ic_number"
+                        app:startIconTint="@color/black">
+
+                        <EditText
+                            android:id="@+id/editTextNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autofillHints="phone"
+                            android:inputType="number"
+                            android:maxLength="11"
+                            android:text="@string/_09"
+                            android:textColor="@color/black"
+                            android:textSize="22sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btn_nextToProcess"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded_btn"
+                        android:text="@string/next"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white_smoke"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="#4285f4" />
+
+                    <Button
+                        android:id="@+id/btn_savedContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded_btn"
+                        android:clickable="true"
+                        android:elevation="10dp"
+                        android:focusable="true"
+                        android:foregroundGravity="bottom"
+                        android:stateListAnimator="@null"
+                        android:text="@string/saved_contact"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFF2"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:translationZ="5dp"
+                        app:backgroundTint="#34A853"
+                        app:icon="@drawable/ic_person"
+                        app:iconSize="50dp" />
+
+                    <Button
+                        android:id="@+id/btn_addPromo"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded_btn"
+                        android:clickable="true"
+                        android:elevation="10dp"
+                        android:focusable="true"
+                        android:foregroundGravity="bottom"
+                        android:stateListAnimator="@null"
+                        android:text="@string/add_promo"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFF2"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:translationZ="5dp"
+                        app:backgroundTint="#34A853"
+                        app:icon="@drawable/ic_add"
+                        app:iconSize="50dp" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_Version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Version"
+                    android:textColor="#004455"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutTelecom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="40dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_btn"
+            android:backgroundTint="@color/white_smoke"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_signal"
+                android:contentDescription="@string/my_e_loading"
+                app:backgroundTint="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Choose Telecom"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_GlobeT"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_btn"
+                    android:text="Globe"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white_smoke"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#29348e" />
+
+                <Button
+                    android:id="@+id/btn_TMT"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_btn"
+                    android:text="TM"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white_smoke"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/red" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_SmartT"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_btn"
+                    android:text="Smart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white_smoke"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#0c9547" />
+
+                <Button
+                    android:id="@+id/btn_TNTT"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_btn"
+                    android:text="TNT"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#f9f500" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_closeTelecom"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_btn"
+                android:text="Close"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:backgroundTint="#F65314" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutContacts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="40dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_btn"
+            android:backgroundTint="@color/white_smoke"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_person"
+                android:contentDescription="@string/my_e_loading" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/buy_load_for"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_ContactName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="@string/customer_number"
+                android:textAlignment="center"
+                android:textColor="#4285f4"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:theme="@style/Theme.MaterialComponents"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/white_smoke"
+                app:startIconDrawable="@drawable/ic_number"
+                app:startIconTint="@color/black">
+
+                <EditText
+                    android:id="@+id/editTextContactNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="phone"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="20sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_close"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_btn"
+                    android:text="@string/close"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white_smoke"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#F65314" />
+
+                <Button
+                    android:id="@+id/btn_nextToProcessContact"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_btn"
+                    android:text="@string/next"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white_smoke"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#4285f4" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutAddPromo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="40dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_btn"
+            android:backgroundTint="@color/white_smoke"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_add"
+                android:contentDescription="@string/my_e_loading"
+                app:backgroundTint="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Choose Telecom"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_Globe"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_btn"
+                android:text="Globe"
+                android:textAllCaps="false"
+                android:textColor="@color/white_smoke"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:backgroundTint="#29348e" />
+
+            <Button
+                android:id="@+id/btn_TM"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_btn"
+                android:text="TM"
+                android:textAllCaps="false"
+                android:textColor="@color/white_smoke"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/red" />
+
+            <Button
+                android:id="@+id/btn_Smart"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_btn"
+                android:text="Smart"
+                android:textAllCaps="false"
+                android:textColor="@color/white_smoke"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:backgroundTint="#0c9547" />
+
+            <Button
+                android:id="@+id/btn_TNT"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_btn"
+                android:text="Talk N Text"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:backgroundTint="#f9f500" />
+
+            <Button
+                android:id="@+id/btn_closePromo"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_btn"
+                android:text="Close"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:backgroundTint="#F65314" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

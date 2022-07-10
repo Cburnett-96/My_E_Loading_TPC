@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">My E-Loading</string>
+    <string name="sim_number">Sim Number</string>
+    <string name="next">Next</string>
+    <string name="saved_contact">Select Contact</string>
+    <string name="regular_load">Regular Load</string>
+    <string name="mobile_data">Mobile Data</string>
+    <string name="amount">Amount:</string>
+    <string name="close">Close</string>
+    <string name="send">Send</string>
+    <string name="promo">Promo Load</string>
+    <string name="call_text"><![CDATA[Call & Text]]></string>
+    <string name="call_text_data"><![CDATA[call, text & data]]></string>
+    <string name="globe">Globe</string>
+    <string name="tm">TM</string>
+    <string name="telco_name">Telco Name</string>
+    <string name="buy_load_for">Buy Load For:</string>
+    <string name="customer_number">Customer Number</string>
+    <string name="name_promo">Name Promo</string>
+    <string name="logo">Network Logo</string>
+    <string name="my_e_loading">My E-Loading</string>
+    <string name="current_balance">Current Balance:</string>
+    <string name="loading">Loading...</string>
+    <string name="_09">09</string>
+    <string name="add_promo">Add Promo</string>
+</resources>
