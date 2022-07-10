@@ -5,15 +5,17 @@ This android app is not recognized by TPC. The app was developed as a resource 
 
 Features List Available:
 
-  #Can Buy Regular Load
+  #Can Buy Regular Load.
   
-  #Can Buy Promo Load
+  #Can Buy Promo Load.
   
-  #Can Select Contact
+  #Can Select Contact.
   
-  #Can Add and Delete Promo
+  #Can Add and Delete Promo manually.
   
-  #Can View Balance
+  #Can View Balance.
+  
+Telecom Available as of now: Globe, TM, TNT and Smart.
   
 =================
 
