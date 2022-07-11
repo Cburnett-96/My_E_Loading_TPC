@@ -27,3 +27,7 @@ Permissions used:
   
   
 Gateway used as of now: 8724
+
+About App:
+
+Versioning: #.#.## [Main Release].[Main Features].[Total of Java class]
