@@ -23,7 +23,7 @@
                 android:layout_height="35dp"
                 android:layout_gravity="start|center"
                 android:background="@drawable/ic_back"
-                app:backgroundTint="@color/black" />
+                app:backgroundTint="#F65314" />
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"

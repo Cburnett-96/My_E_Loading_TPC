@@ -25,7 +25,7 @@
                 android:layout_height="35dp"
                 android:background="@drawable/ic_back"
                 android:contentDescription="@string/close"
-                app:backgroundTint="@null" />
+                app:backgroundTint="#F65314" />
 
             <TextView
                 android:id="@+id/textView_telecomName"
@@ -46,175 +46,169 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/container"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/container"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:layout_margin="5dp"
+                    android:hint="Enter promo code"
+                    android:textColorHint="@color/gray"
+                    android:theme="@style/Theme.MaterialComponents"
+                    app:boxStrokeColor="@color/black"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/black"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_code"
+                    app:startIconTint="@color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    <EditText
+                        android:id="@+id/idEdtPromoCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:hint="Enter promo code"
-                        android:textColorHint="@color/gray"
-                        android:theme="@style/Theme.MaterialComponents"
-                        app:boxStrokeColor="@color/black"
-                        app:endIconMode="clear_text"
-                        app:endIconTint="@color/black"
-                        app:hintEnabled="true"
-                        app:hintTextColor="@color/black"
-                        app:startIconDrawable="@drawable/ic_code"
-                        app:startIconTint="@color/black">
+                        android:inputType="textCapCharacters"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/idEdtPromoCode"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textCapCharacters"
-                            android:textColor="@color/black" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:hint="Enter SMS description"
+                    android:textColorHint="@color/gray"
+                    android:theme="@style/Theme.MaterialComponents"
+                    app:boxStrokeColor="@color/black"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/black"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_sms"
+                    app:startIconTint="@color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    <EditText
+                        android:id="@+id/idEdtSMS"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:hint="Enter SMS description"
-                        android:textColorHint="@color/gray"
-                        android:theme="@style/Theme.MaterialComponents"
-                        app:boxStrokeColor="@color/black"
-                        app:endIconMode="clear_text"
-                        app:endIconTint="@color/black"
-                        app:hintEnabled="true"
-                        app:hintTextColor="@color/black"
-                        app:startIconDrawable="@drawable/ic_sms"
-                        app:startIconTint="@color/black">
+                        android:lines="3"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/idEdtSMS"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lines="3"
-                            android:textColor="@color/black" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:hint="Enter Call description"
+                    android:textColorHint="@color/gray"
+                    android:theme="@style/Theme.MaterialComponents"
+                    app:boxStrokeColor="@color/black"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/black"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_call"
+                    app:startIconTint="@color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    <EditText
+                        android:id="@+id/idEdtCall"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:hint="Enter Call description"
-                        android:textColorHint="@color/gray"
-                        android:theme="@style/Theme.MaterialComponents"
-                        app:boxStrokeColor="@color/black"
-                        app:endIconMode="clear_text"
-                        app:endIconTint="@color/black"
-                        app:hintEnabled="true"
-                        app:hintTextColor="@color/black"
-                        app:startIconDrawable="@drawable/ic_call"
-                        app:startIconTint="@color/black">
+                        android:lines="3"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/idEdtCall"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lines="3"
-                            android:textColor="@color/black" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:hint="Enter Data description"
+                    android:textColorHint="@color/gray"
+                    android:theme="@style/Theme.MaterialComponents"
+                    app:boxStrokeColor="@color/black"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/black"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_signal"
+                    app:startIconTint="@color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    <EditText
+                        android:id="@+id/idEdtData"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:hint="Enter Data description"
-                        android:textColorHint="@color/gray"
-                        android:theme="@style/Theme.MaterialComponents"
-                        app:boxStrokeColor="@color/black"
-                        app:endIconMode="clear_text"
-                        app:endIconTint="@color/black"
-                        app:hintEnabled="true"
-                        app:hintTextColor="@color/black"
-                        app:startIconDrawable="@drawable/ic_signal"
-                        app:startIconTint="@color/black">
+                        android:lines="3"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/idEdtData"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lines="3"
-                            android:textColor="@color/black" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:hint="Enter Validity"
+                    android:textColorHint="@color/gray"
+                    android:theme="@style/Theme.MaterialComponents"
+                    app:boxStrokeColor="@color/black"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/black"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_time"
+                    app:startIconTint="@color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    <EditText
+                        android:id="@+id/idEdtValidity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:hint="Enter Validity"
-                        android:textColorHint="@color/gray"
-                        android:theme="@style/Theme.MaterialComponents"
-                        app:boxStrokeColor="@color/black"
-                        app:endIconMode="clear_text"
-                        app:endIconTint="@color/black"
-                        app:hintEnabled="true"
-                        app:hintTextColor="@color/black"
-                        app:startIconDrawable="@drawable/ic_time"
-                        app:startIconTint="@color/black">
+                        android:inputType="textCapSentences"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/idEdtValidity"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textCapSentences"
-                            android:textColor="@color/black" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:hint="Enter Price"
+                    android:textColorHint="@color/gray"
+                    android:theme="@style/Theme.MaterialComponents"
+                    app:boxStrokeColor="@color/black"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/black"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_price"
+                    app:startIconTint="@color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    <EditText
+                        android:id="@+id/idEdtPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:hint="Enter Price"
-                        android:textColorHint="@color/gray"
-                        android:theme="@style/Theme.MaterialComponents"
-                        app:boxStrokeColor="@color/black"
-                        app:endIconMode="clear_text"
-                        app:endIconTint="@color/black"
-                        app:hintEnabled="true"
-                        app:hintTextColor="@color/black"
-                        app:startIconDrawable="@drawable/ic_price"
-                        app:startIconTint="@color/black">
+                        android:inputType="number"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <EditText
-                            android:id="@+id/idEdtPrice"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="number"
-                            android:textColor="@color/black" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <Button
-                        android:id="@+id/btn_Add"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_btn"
-                        android:text="Add"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white_smoke"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:backgroundTint="#4285f4" />
-                </LinearLayout>
+                <Button
+                    android:id="@+id/btn_Add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rounded_btn"
+                    android:text="Add"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white_smoke"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#4285f4" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

@@ -30,8 +30,8 @@
 
             <Button
                 android:id="@+id/btn_Exit"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/ic_exit"
                 android:contentDescription="@string/close"
@@ -40,12 +40,11 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -79,7 +78,6 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/container"
                     android:elevation="10dp"
                     android:gravity="center"
@@ -155,46 +153,59 @@
                     <Button
                         android:id="@+id/btn_savedContact"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@drawable/rounded_btn"
-                        android:clickable="true"
-                        android:elevation="10dp"
-                        android:focusable="true"
-                        android:foregroundGravity="bottom"
-                        android:stateListAnimator="@null"
                         android:text="@string/saved_contact"
                         android:textAllCaps="false"
                         android:textColor="#FFFFF2"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:translationZ="5dp"
                         app:backgroundTint="#34A853"
                         app:icon="@drawable/ic_person"
-                        app:iconSize="50dp" />
+                        app:iconSize="30dp" />
 
-                    <Button
-                        android:id="@+id/btn_addPromo"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_btn"
-                        android:clickable="true"
-                        android:elevation="10dp"
-                        android:focusable="true"
-                        android:foregroundGravity="bottom"
-                        android:stateListAnimator="@null"
-                        android:text="@string/add_promo"
-                        android:textAllCaps="false"
-                        android:textColor="#FFFFF2"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:translationZ="5dp"
-                        app:backgroundTint="#34A853"
-                        app:icon="@drawable/ic_add"
-                        app:iconSize="50dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_addPromo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/rounded_btn"
+                            android:text="@string/add_promo"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFF2"
+                            android:textStyle="bold"
+                            app:backgroundTint="#34A853"
+                            app:icon="@drawable/ic_add"
+                            app:iconSize="30dp" />
+
+                        <Button
+                            android:id="@+id/btn_refund"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/rounded_btn"
+                            android:text="Refund"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFF2"
+                            android:textStyle="bold"
+                            app:backgroundTint="#F65314"
+                            app:icon="@drawable/ic_undo"
+                            app:iconSize="30dp" />
+                    </LinearLayout>
                 </LinearLayout>
                 <TextView
                     android:id="@+id/tv_Version"
@@ -205,6 +216,37 @@
                     android:hint="Version"
                     android:textColor="#004455"
                     android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnGithub"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="20dp"
+                        android:gravity="start"
+                        android:background="@drawable/logo_github"
+                        app:backgroundTint="@color/status_bar_color_dark" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                    <Button
+                        android:id="@+id/btnShare"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_share"
+                        app:backgroundTint="@color/status_bar_color_dark" />
+                </LinearLayout>
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

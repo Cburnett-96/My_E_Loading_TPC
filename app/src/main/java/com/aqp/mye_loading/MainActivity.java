@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -26,6 +29,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aqp.mye_loading.other.MessageReceiver;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,12 +48,16 @@ import java.util.regex.Pattern;
 public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1 ;
     private static final int CONTACT_PICKER_RESULT = 111;
-    Button btnExit, btnNextToProcess, btnContacts, btnNextToProcessContact, btnClose, btnAddPromo, btnClosePromo, btnCloseTelecom,
-            btnGlobe, btnSmart, btnTM, btnTNT, btnGlobeT, btnSmartT, btnTMT, btnTNTT;
+    Button btnExit, btnNextToProcess, btnRefund, btnContacts, btnNextToProcessContact, btnClose, btnAddPromo,
+            btnClosePromo, btnCloseTelecom, btnGlobe, btnSmart, btnTM, btnTNT, btnGlobeT, btnSmartT, btnTMT, btnTNTT,
+            btnGithub, btnShare;
     EditText eTNumber, eTContactNumber;
     TextView tvContactName, tvBalance, tvVersion;
     String Number, ContactNumber;
     LinearLayout layoutContact, layoutMain, layoutAddPromo, layoutTelecom;
+
+    private MessageReceiver messageReceiver;
+    public static String SMSRECEVID = "custom.action.SMSRECEVEDINFO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         btnExit = findViewById(R.id.btn_Exit);
         btnNextToProcess = findViewById(R.id.btn_nextToProcess);
         btnContacts = findViewById(R.id.btn_savedContact);
+        btnRefund = findViewById(R.id.btn_refund);
         eTNumber = findViewById(R.id.editTextNumber);
         btnNextToProcessContact = findViewById(R.id.btn_nextToProcessContact);
         btnClose = findViewById(R.id.btn_close);
@@ -83,12 +100,24 @@ public class MainActivity extends AppCompatActivity {
         layoutTelecom = findViewById(R.id.layoutTelecom);
         tvBalance = findViewById(R.id.textViewBalance);
         tvVersion = findViewById(R.id.tv_Version);
+        btnGithub = findViewById(R.id.btnGithub);
+        btnShare = findViewById(R.id.btnShare);
 
         if((ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) & ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)) != PackageManager.PERMISSION_GRANTED){
             checkPermission();
         } else {
             GetBalanceSMS();
         }
+
+        messageReceiver = new MessageReceiver(){
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                // TODO Auto-generated method stub
+                if(intent.getAction().equals(MainActivity.SMSRECEVID)){
+                    GetBalanceSMS();
+                }
+            }
+        };
 
         btnContacts.setOnClickListener(v -> {
             layoutMain.setVisibility(View.GONE);
@@ -104,6 +133,10 @@ public class MainActivity extends AppCompatActivity {
             layoutMain.setVisibility(View.GONE);
             layoutAddPromo.setVisibility(View.VISIBLE);
             AddPromo();
+        });
+        btnRefund.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, RefundActivity.class);
+            startActivity(intent);
         });
         //Close and Exit
         btnClosePromo.setOnClickListener(view -> {
@@ -124,6 +157,14 @@ public class MainActivity extends AppCompatActivity {
         });
         String version = "App Version: "+BuildConfig.VERSION_NAME;
         tvVersion.setText(version);
+
+        btnGithub.setOnClickListener(view -> {
+            Intent browserGithub = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Cburnett-96/My_E_Loading_TPC"));
+            startActivity(browserGithub);
+        });
+        btnShare.setOnClickListener(view -> {
+            shareApplication();
+        });
     }
 
     private void validateNumber(){
@@ -253,6 +294,8 @@ public class MainActivity extends AppCompatActivity {
             layoutAddPromo.setVisibility(View.GONE);
             layoutMain.setVisibility(View.VISIBLE);
         });
+
+
     }
 
     public void doLaunchContactPicker(View view) {
@@ -349,6 +392,58 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == MY_PERMISSIONS_REQUEST_SEND_SMS && grantResults.length > 0 ){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 Toast.makeText(this,"Permission Granted",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void shareApplication() {
+        ApplicationInfo app = getApplicationContext().getApplicationInfo();
+        String filePath = app.sourceDir;
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+
+        // MIME of .apk is "application/vnd.android.package-archive".
+        // but Bluetooth does not accept this. Let's use "*/*" instead.
+        intent.setType("*/*");
+
+        // Append file and send Intent
+        File originalApk = new File(filePath);
+
+        try {
+            //Make new directory in new location
+            File tempFile = new File(getExternalCacheDir() + "/ExtractedApk");
+            //If directory doesn't exists create new
+            if (!tempFile.isDirectory())
+                if (!tempFile.mkdirs())
+                    return;
+            //Get application's name and convert to lowercase
+            tempFile = new File(tempFile.getPath() + "/" + getString(app.labelRes).replace(" ","").toLowerCase() + "_v"+BuildConfig.VERSION_NAME+".apk");
+            //If file doesn't exists create new
+            if (!tempFile.exists()) {
+                if (!tempFile.createNewFile()) {
+                    return;
+                }
+            }
+            //Copy file to new location
+            InputStream in = new FileInputStream(originalApk);
+            OutputStream out = new FileOutputStream(tempFile);
+
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            in.close();
+            out.close();
+            System.out.println("File copied.");
+            //Open share dialog
+            //Uri photoURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", tempFile);
+            Uri photoURI = FileProvider.getUriForFile(Objects.requireNonNull(getApplicationContext()),
+                    BuildConfig.APPLICATION_ID + ".provider", tempFile);
+            intent.putExtra(Intent.EXTRA_STREAM, photoURI);
+            startActivity(Intent.createChooser(intent, "Share app via"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

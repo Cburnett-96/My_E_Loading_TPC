@@ -30,17 +30,22 @@
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_delete.xml" value="0.154" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_exit.xml" value="0.154" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_number.xml" value="0.154" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_paste.xml" value="0.154" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_person.xml" value="0.154" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_price.xml" value="0.154" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_share.xml" value="0.154" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_undo.xml" value="0.154" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/rounded_btn.xml" value="0.154" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_add_promo.xml" value="0.2" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_process.xml" value="0.2" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_promo_process.xml" value="0.2" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_refund.xml" value="0.2" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_smart_tntactivity.xml" value="0.2" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_promo_load.xml" value="0.2" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_regular_load.xml" value="0.2" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/list_promo.xml" value="0.2" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/xml/provider_paths.xml" value="0.2" />
       </map>
     </option>
   </component>

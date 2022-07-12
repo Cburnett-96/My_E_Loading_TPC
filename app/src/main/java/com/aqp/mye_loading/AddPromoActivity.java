@@ -64,8 +64,8 @@ public class AddPromoActivity extends AppCompatActivity {
             String Validity = edtValidity.getText().toString().trim();
             String Price = edtPrice.getText().toString().trim();
 
-            if (promoCode.isEmpty() && SMS.isEmpty() && Call.isEmpty() &&
-                    Data.isEmpty() && Validity.isEmpty() && Price.isEmpty()) {
+            if (promoCode.isEmpty() || SMS.isEmpty() || Call.isEmpty() ||
+                    Data.isEmpty() || Validity.isEmpty() || Price.isEmpty()) {
                 Toast.makeText(AddPromoActivity.this, "Please enter all the data..", Toast.LENGTH_SHORT).show();
                 return;
             }
