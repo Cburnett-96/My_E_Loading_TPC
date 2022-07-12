@@ -15,6 +15,8 @@ Features List Available:
   
   #Can View Balance.
   
+  #Refund with list of received SMS from 8724 to copy fast the trace number.
+  
 Telecom Available as of now: Globe, TM, TNT and Smart.
   
 =================
