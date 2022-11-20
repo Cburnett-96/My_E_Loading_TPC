@@ -5,19 +5,18 @@ This android app is not recognized by TPC. The app was developed as a resource 
 
 Features List Available:
 
-  #Can Buy Regular Load.
+  - Can Buy Regular
+  - Can Buy Promo Load.
+  - Can Select Contact.  
+  - Can Add and Delete Promo manually.
+  - Can View Balance.
+  - Refund with list of received SMS from 8724 to copy fast the trace number.
+  - Can share the apk file.
+  - Pre-loaded list of promos for available telecom
+  - Must brought load/promo (Highlights Promos)
+  - Sorting promo list (A-Z and Low-High vice-versa)
   
-  #Can Buy Promo Load.
-  
-  #Can Select Contact.
-  
-  #Can Add and Delete Promo manually.
-  
-  #Can View Balance.
-  
-  #Refund with list of received SMS from 8724 to copy fast the trace number.
-  
-Telecom Available as of now: Globe, TM, TNT and Smart.
+Telecom Promo Available as of now: Globe, TM, TNT and Smart. (Regular Load any Telecom)
   
 =================
 
