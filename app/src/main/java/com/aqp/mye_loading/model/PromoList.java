@@ -1,10 +1,15 @@
 package com.aqp.mye_loading.model;
 
 public class PromoList {
-    private String promocode, price, sms, call, data, validity;
+    public String promocode;
+    public int price;
+    public String sms;
+    public String call;
+    public String data;
+    public String validity;
     public int id;
 
-    public PromoList(int id, String promocode, String price, String sms, String call, String data, String validity) {
+    public PromoList(int id, String promocode, int price, String sms, String call, String data, String validity) {
         this.id = id;
         this.promocode = promocode;
         this.price = price;
@@ -34,11 +39,11 @@ public class PromoList {
         this.promocode = promocode;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

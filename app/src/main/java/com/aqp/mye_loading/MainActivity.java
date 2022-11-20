@@ -1,35 +1,48 @@
 package com.aqp.mye_loading;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aqp.mye_loading.other.MessageReceiver;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
+import com.aqp.mye_loading.adapter.AdapterMustPromoList;
+import com.aqp.mye_loading.adapter.AdapterPromoList;
+import com.aqp.mye_loading.model.MustPromoList;
+import com.aqp.mye_loading.model.PromoList;
+import com.aqp.mye_loading.other.DBHandler;
+import com.aqp.mye_loading.other.DBHandlerMustPromo;
+import com.aqp.mye_loading.other.DataBaseHelper;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,26 +50,29 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.Ref;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1 ;
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
     private static final int CONTACT_PICKER_RESULT = 111;
     Button btnExit, btnNextToProcess, btnRefund, btnContacts, btnNextToProcessContact, btnClose, btnAddPromo,
             btnClosePromo, btnCloseTelecom, btnGlobe, btnSmart, btnTM, btnTNT, btnGlobeT, btnSmartT, btnTMT, btnTNTT,
             btnGithub, btnShare;
     EditText eTNumber, eTContactNumber;
-    TextView tvContactName, tvBalance, tvVersion;
+    TextView tvContactName, tvBalance, tvVersion, tvNoPromo;
     String Number, ContactNumber;
-    LinearLayout layoutContact, layoutMain, layoutAddPromo, layoutTelecom;
+    LinearLayout layoutContact, layoutMain, layoutAddPromo, layoutTelecom, layoutMustPromo;
 
-    private MessageReceiver messageReceiver;
+    private ArrayList <MustPromoList> mustPromoLists;
+    RecyclerView recyclerViewMustPromoList;
+    DBHandlerMustPromo dbHandlerMustPromo;
+
+    loadingDialog loadingDialog;
+    Handler handler;
+
     public static String SMSRECEVID = "custom.action.SMSRECEVEDINFO";
 
     @Override
@@ -70,9 +86,13 @@ public class MainActivity extends AppCompatActivity {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.white_smoke));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.violet));
+            window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white_smoke));
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+
+        loadingDialog = new loadingDialog(MainActivity.this, R.style.CustomAlertDialog);
+        handler = new Handler();
 
         btnExit = findViewById(R.id.btn_Exit);
         btnNextToProcess = findViewById(R.id.btn_nextToProcess);
@@ -102,22 +122,22 @@ public class MainActivity extends AppCompatActivity {
         tvVersion = findViewById(R.id.tv_Version);
         btnGithub = findViewById(R.id.btnGithub);
         btnShare = findViewById(R.id.btnShare);
+        tvNoPromo = findViewById(R.id.textViewNoPromo);
+        layoutMustPromo = findViewById(R.id.layoutMustPromo);
+        recyclerViewMustPromoList = findViewById(R.id.recycleViewMustPromoList);
+        mustPromoLists = new ArrayList<>();
+        dbHandlerMustPromo = new DBHandlerMustPromo(MainActivity.this);
 
-        if((ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) & ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)) != PackageManager.PERMISSION_GRANTED){
+        if ((ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) & ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)) != PackageManager.PERMISSION_GRANTED) {
             checkPermission();
         } else {
-            GetBalanceSMS();
+            loadingDialog.startLoadingDialog();
+            handler.postDelayed(() -> {
+                loadingDialog.dismisDialog();
+                GetBalanceSMS();
+                setAdapter();
+            },1000);
         }
-
-        messageReceiver = new MessageReceiver(){
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                // TODO Auto-generated method stub
-                if(intent.getAction().equals(MainActivity.SMSRECEVID)){
-                    GetBalanceSMS();
-                }
-            }
-        };
 
         btnContacts.setOnClickListener(v -> {
             layoutMain.setVisibility(View.GONE);
@@ -126,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         });
         tvContactName.setOnClickListener(this::doLaunchContactPicker);
 
-        btnNextToProcess.setOnClickListener(v -> validateNumber());
+        btnNextToProcess.setOnClickListener(this::validateNumber);
         btnNextToProcessContact.setOnClickListener(v -> validateNumberContact());
 
         btnAddPromo.setOnClickListener(view -> {
@@ -153,28 +173,45 @@ public class MainActivity extends AppCompatActivity {
         });
         btnExit.setOnClickListener(v -> {
             finishAffinity();
-            System.exit(0);
         });
-        String version = "App Version: "+BuildConfig.VERSION_NAME;
+        String version = "App Version: " + BuildConfig.VERSION_NAME;
         tvVersion.setText(version);
 
         btnGithub.setOnClickListener(view -> {
             Intent browserGithub = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Cburnett-96/My_E_Loading_TPC"));
             startActivity(browserGithub);
         });
-        btnShare.setOnClickListener(view -> {
-            shareApplication();
-        });
+        btnShare.setOnClickListener(view -> shareApplication());
     }
 
-    private void validateNumber(){
+    private void CopyDatabase() {
+        DataBaseHelper myDbHelper;
+        myDbHelper = new DataBaseHelper(this);
+
+        try {
+
+            myDbHelper.createDataBase();
+
+        } catch (IOException ioe) {
+
+            throw new Error("Unable to create database");
+
+        }
+
+        myDbHelper.openDataBase();
+
+    }
+
+    private void validateNumber(View v) {
+        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
         Number = eTNumber.getText().toString().trim();
 
         if (TextUtils.isEmpty(Number)) {
             Toast.makeText(MainActivity.this, "Input the Numbers", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (Number.length() < 11){
+        if (Number.length() < 11) {
             Toast.makeText(MainActivity.this, "Numbers should be 11 digits", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -215,14 +252,15 @@ public class MainActivity extends AppCompatActivity {
             layoutMain.setVisibility(View.VISIBLE);
         });
     }
-    private void validateNumberContact(){
-        ContactNumber = eTContactNumber.getText().toString().trim().replace("+63","0");
+
+    private void validateNumberContact() {
+        ContactNumber = eTContactNumber.getText().toString().trim().replace("+63", "0");
 
         if (TextUtils.isEmpty(ContactNumber)) {
             Toast.makeText(MainActivity.this, "Input the Numbers", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (ContactNumber.length() < 11){
+        if (ContactNumber.length() < 11) {
             Toast.makeText(MainActivity.this, "Numbers should be 11 digits", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -265,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void AddPromo(){
+    private void AddPromo() {
         btnTNT.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, AddPromoActivity.class);
             intent.putExtra("telecom", "TNT");
@@ -303,6 +341,8 @@ public class MainActivity extends AppCompatActivity {
                 ContactsContract.Contacts.CONTENT_URI);
         startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
     }
+
+    @SuppressLint("Range")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -315,13 +355,14 @@ public class MainActivity extends AppCompatActivity {
                     String id = contactData.getLastPathSegment();
                     String[] columns = {ContactsContract.CommonDataKinds.Phone.DATA, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME};
                     Cursor phoneCur = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, columns,
-                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID
-                                            + " = ?", new String[]{id},
-                                    null);
+                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID
+                                    + " = ?", new String[]{id},
+                            null);
 
                     final ArrayList<String> phonesList = new ArrayList<>();
                     String Name = null;
-                    if (phoneCur.moveToFirst()) {
+
+                    if (phoneCur != null && phoneCur.moveToFirst()) {
                         do {
                             Name = phoneCur.getString(phoneCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                             String phone = phoneCur.getString(phoneCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DATA));
@@ -330,6 +371,7 @@ public class MainActivity extends AppCompatActivity {
                         tvContactName.setText(Name);
                     }
 
+                    assert phoneCur != null;
                     phoneCur.close();
 
                     if (phonesList.size() == 0) {
@@ -338,6 +380,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.LENGTH_LONG).show();
                     } else if (phonesList.size() == 1) {
                         eTContactNumber.setText(phonesList.get(0));
+                        validateNumberContact();
                     } else {
 
                         final String[] phonesArr = new String[phonesList
@@ -349,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
                         AlertDialog.Builder dialog = new AlertDialog.Builder(
                                 MainActivity.this);
                         dialog.setTitle("Name : " + Name);
-                        ((AlertDialog.Builder) dialog).setItems(phonesArr,
+                        dialog.setItems(phonesArr,
                                 (dialog1, which) -> {
                                     String selectedEmail = phonesArr[which];
                                     eTContactNumber.setText(selectedEmail);
@@ -364,34 +407,56 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void GetBalanceSMS(){
+    private void GetBalanceSMS() {
         Uri uriSMSURI = Uri.parse("content://sms/inbox");
-        Cursor cur = getContentResolver().query(uriSMSURI, null, "address='8724'", null,null);
+        Cursor cur = getContentResolver().query(uriSMSURI, null, "address='8724'", null, null);
 
         if (cur.moveToFirst()) {
             Pattern pattern = Pattern.compile("P(.*?)T");
             Matcher matcher = pattern.matcher(cur.getString(12));
-            if (matcher.find())
-            {
+            if (matcher.find()) {
                 tvBalance.setText(Objects.requireNonNull(matcher.group(1)).trim());
             }
-        }else {
+        } else {
             Toast.makeText(MainActivity.this, "No SMS Found on 8724", Toast.LENGTH_SHORT).show();
         }
+        if (cur.getCount() == 0)
+            return;
+        System.out.println(cur.getString(12));
+    }
 
+    private void setAdapter(){
+        mustPromoLists = dbHandlerMustPromo.readMustPromo();
+        AdapterMustPromoList adapter = new AdapterMustPromoList(mustPromoLists, MainActivity.this);
+        if (mustPromoLists.size() <= 5)
+        return;
+        recyclerViewMustPromoList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewMustPromoList.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewMustPromoList.setAdapter(adapter);
+        tvNoPromo.setVisibility(View.GONE);
+        layoutMustPromo.setVisibility(View.VISIBLE);
     }
 
     private void checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS,Manifest.permission.READ_SMS,Manifest.permission.RECEIVE_SMS,Manifest.permission.READ_CONTACTS},MY_PERMISSIONS_REQUEST_SEND_SMS);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_CONTACTS}, MY_PERMISSIONS_REQUEST_SEND_SMS);
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == MY_PERMISSIONS_REQUEST_SEND_SMS && grantResults.length > 0 ){
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                Toast.makeText(this,"Permission Granted",Toast.LENGTH_SHORT).show();
+        if (requestCode == MY_PERMISSIONS_REQUEST_SEND_SMS && grantResults.length > 0) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+
+            loadingDialog.startLoadingDialog();
+
+            handler.postDelayed(() -> {
+                loadingDialog.dismisDialog();
+                GetBalanceSMS();
+                CopyDatabase();
+            },2000);
         }
     }
 
@@ -416,7 +481,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!tempFile.mkdirs())
                     return;
             //Get application's name and convert to lowercase
-            tempFile = new File(tempFile.getPath() + "/" + getString(app.labelRes).replace(" ","").toLowerCase() + "_v"+BuildConfig.VERSION_NAME+".apk");
+            tempFile = new File(tempFile.getPath() + "/" + getString(app.labelRes).replace(" ", "").toLowerCase() + "_v" + BuildConfig.VERSION_NAME + ".apk");
             //If file doesn't exists create new
             if (!tempFile.exists()) {
                 if (!tempFile.createNewFile()) {
@@ -445,5 +510,17 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static long back_pressed;
+    @Override
+    public void onBackPressed() {
+        if (back_pressed + 2000 > System.currentTimeMillis()){
+            overridePendingTransition(0, 0);
+            finishAffinity();
+            super.onBackPressed();
+        }
+        else Toast.makeText(getBaseContext(), "Press once again to exit!", Toast.LENGTH_SHORT).show();
+        back_pressed = System.currentTimeMillis();
     }
 }

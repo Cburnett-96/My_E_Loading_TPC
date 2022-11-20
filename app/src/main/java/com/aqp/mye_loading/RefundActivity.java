@@ -1,26 +1,19 @@
 package com.aqp.mye_loading;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteException;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.SmsManager;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,16 +21,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RefundActivity extends AppCompatActivity {
     EditText edtTraceNumber;
@@ -58,7 +49,7 @@ public class RefundActivity extends AppCompatActivity {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.white_smoke));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.white_smoke));
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
@@ -109,7 +100,7 @@ public class RefundActivity extends AppCompatActivity {
         String SENT = "SMS_SENT";
         String DELIVERED = "SMS_DELIVERED";
 
-        PendingIntent sentPI = PendingIntent.getBroadcast(this, 0,
+        @SuppressLint("UnspecifiedImmutableFlag") PendingIntent sentPI = PendingIntent.getBroadcast(this, 0,
                 new Intent(SENT), 0);
 
         registerReceiver(new BroadcastReceiver(){
@@ -146,7 +137,7 @@ public class RefundActivity extends AppCompatActivity {
             }
         }, new IntentFilter(SENT));
 
-        PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0,
+        @SuppressLint("UnspecifiedImmutableFlag") PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0,
                 new Intent(DELIVERED), 0);
 
         registerReceiver(new BroadcastReceiver(){
@@ -176,19 +167,9 @@ public class RefundActivity extends AppCompatActivity {
         StringBuilder smsBuilder = new StringBuilder();
 
         Uri uriSMSURI = Uri.parse("content://sms/inbox");
-        Cursor cur = getContentResolver().query(uriSMSURI, null, "address='8724'", null,"date asc");
+        @SuppressLint("Recycle") Cursor cur = getContentResolver().query(uriSMSURI, null, "address='8724'", null,"date asc");
 
         if (cur.moveToFirst()) {
-            /*int index_Body = cur.getColumnIndex("body");
-                do {
-                    String strbody = cur.getString(index_Body);
-                    smsBuilder.append(strbody).append(" ");
-                    smsBuilder.append("\n\n");
-                } while (cur.moveToNext());
-                textViewSMS.setText(smsBuilder);
-                if (!cur.isClosed()) {
-                    cur.close();
-                }*/
             while (cur.moveToNext()){
                 String Body= cur.getString(cur.getColumnIndexOrThrow("body"));
                 smsBuilder.append("\n");

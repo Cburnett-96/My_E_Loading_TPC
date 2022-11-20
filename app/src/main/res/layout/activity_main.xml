@@ -4,114 +4,135 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/violet"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/layoutMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white_smoke"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:baselineAligned="false"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:text="@string/my_e_loading"
-                android:textColor="@color/black"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/my_e_loading"
+                    android:textColor="@color/white_smoke"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btn_Exit"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/ic_exit"
-                android:contentDescription="@string/close"
-                app:backgroundTint="@null" />
-        </LinearLayout>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/btn_Exit"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/ic_exit"
+                    android:contentDescription="@string/close"
+                    app:backgroundTint="@color/white_smoke" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
-                    android:orientation="horizontal">
+                    android:text="@string/current_balance"
+                    android:textColor="@color/light_blue"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/current_balance"
-                        android:textColor="@color/black"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textViewBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:hint="No Balance Found"
+                    android:textColorHint="@color/gray"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textColor="@color/white_smoke"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textViewBalance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:hint="@string/loading"
-                        android:textColor="#791E94"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Highlight promos"
+                android:textColor="@color/light_blue" />
+
+            <LinearLayout
+                android:id="@+id/layoutMustPromo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleViewMustPromoList"
+                    android:scrollbars="horizontal"
+                    android:isScrollContainer="true"
+                    android:overScrollMode="ifContentScrolls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewNoPromo"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="No Available Promo"
+                android:textColor="@color/gray"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_card"
+            android:orientation="vertical">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/container"
-                    android:elevation="10dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:translationZ="5dp">
-
-                    <ImageView
-                        android:id="@+id/imageViewLogo"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="20dp"
-                        android:background="@drawable/ic_number"
-                        android:backgroundTint="@color/black"
-                        android:contentDescription="@string/my_e_loading" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/buy_load_for"
-                        android:textColor="@color/black"
-                        android:textSize="28sp"
-                        android:textStyle="bold" />
-
+                    android:layout_marginTop="15dp"
+                    android:padding="10dp"
+                    android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:hint="@string/customer_number"
-                        android:textColorHint="@color/gray"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:hint="@string/buy_load_for"
+                        android:textColorHint="@color/black"
                         android:theme="@style/Theme.MaterialComponents"
+                        android:elevation="5dp"
+                        android:stateListAnimator="@null"
+                        android:translationZ="2dp"
                         app:boxStrokeColor="@color/black"
                         app:counterEnabled="true"
                         app:counterMaxLength="11"
@@ -131,124 +152,152 @@
                             android:inputType="number"
                             android:maxLength="11"
                             android:text="@string/_09"
-                            android:textColor="@color/black"
-                            android:textSize="22sp" />
+                            android:background="@drawable/rounded_btn"
+                            android:backgroundTint="#edeffd"
+                            android:textColor="@color/black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <Button
-                        android:id="@+id/btn_nextToProcess"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_btn"
-                        android:text="@string/next"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white_smoke"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:backgroundTint="#4285f4" />
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/btn_savedContact"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/rounded_btn"
-                        android:text="@string/saved_contact"
-                        android:textAllCaps="false"
-                        android:textColor="#FFFFF2"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:backgroundTint="#34A853"
-                        app:icon="@drawable/ic_person"
-                        app:iconSize="30dp" />
+                        <Button
+                            android:id="@+id/btn_savedContact"
+                            android:layout_width="200dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/rounded_btn"
+                            android:elevation="5dp"
+                            android:stateListAnimator="@null"
+                            android:text="@string/saved_contact"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white_smoke"
+                            android:textStyle="bold"
+                            android:translationZ="2dp"
+                            app:backgroundTint="#34A853"
+                            app:icon="@drawable/ic_person"
+                            app:iconSize="30dp" />
+
+                        <Button
+                            android:id="@+id/btn_nextToProcess"
+                            android:layout_width="200dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/rounded_btn"
+                            android:elevation="5dp"
+                            android:stateListAnimator="@null"
+                            android:text="@string/next"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white_smoke"
+                            android:textStyle="bold"
+                            android:translationZ="2dp"
+                            app:backgroundTint="@color/violet"
+                            app:icon="@drawable/ic_exit"
+                            app:iconSize="30dp"/>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="15dp"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:layout_marginBottom="20dp"
                         android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/btn_addPromo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
+                            android:layout_width="200dp"
+                            android:layout_height="80dp"
                             android:layout_gravity="center"
+                            android:layout_margin="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/rounded_btn"
+                            android:elevation="5dp"
+                            android:stateListAnimator="@null"
                             android:text="@string/add_promo"
                             android:textAllCaps="false"
-                            android:textColor="#FFFFF2"
+                            android:textColor="@color/white_smoke"
                             android:textStyle="bold"
+                            android:translationZ="2dp"
                             app:backgroundTint="#34A853"
                             app:icon="@drawable/ic_add"
-                            app:iconSize="30dp" />
+                            app:iconSize="30dp"/>
 
                         <Button
                             android:id="@+id/btn_refund"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
+                            android:layout_width="200dp"
+                            android:layout_height="80dp"
                             android:layout_gravity="center"
+                            android:layout_margin="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/rounded_btn"
-                            android:text="Refund"
+                            android:elevation="5dp"
+                            android:stateListAnimator="@null"
+                            android:text="@string/refund"
                             android:textAllCaps="false"
-                            android:textColor="#FFFFF2"
+                            android:textColor="@color/white_smoke"
                             android:textStyle="bold"
+                            android:translationZ="2dp"
                             app:backgroundTint="#F65314"
                             app:icon="@drawable/ic_undo"
                             app:iconSize="30dp" />
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_Version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="10dp"
+                        android:hint="@string/version"
+                        android:textColor="#004455"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnGithub"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="20dp"
+                            android:gravity="start"
+                            android:background="@drawable/logo_github"
+                            app:backgroundTint="@color/status_bar_color_dark" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <Button
+                            android:id="@+id/btnShare"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_share"
+                            app:backgroundTint="@color/status_bar_color_dark" />
+                    </LinearLayout>
                 </LinearLayout>
-                <TextView
-                    android:id="@+id/tv_Version"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginBottom="10dp"
-                    android:hint="Version"
-                    android:textColor="#004455"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btnGithub"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="20dp"
-                        android:gravity="start"
-                        android:background="@drawable/logo_github"
-                        app:backgroundTint="@color/status_bar_color_dark" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
-
-                    <Button
-                        android:id="@+id/btnShare"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/ic_share"
-                        app:backgroundTint="@color/status_bar_color_dark" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout

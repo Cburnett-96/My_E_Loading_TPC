@@ -55,7 +55,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 + CALL_COL + " TEXT,"
                 + DATA_COL + " TEXT,"
                 + VALIDITY_COL + " TEXT,"
-                + PRICE_COL + " TEXT)";
+                + PRICE_COL + " INTEGER)";
 
         // at last we are calling a exec sql
         // method to execute above sql query
@@ -63,7 +63,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // this method is use to add new course to our sqlite database.
-    public void addNewPromo(String telecom, String promoCode, String SMS, String Call, String Data, String Validity, String Price) {
+    public void addNewPromo(String telecom, String promoCode, String SMS, String Call, String Data, String Validity, int Price) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -116,14 +116,14 @@ public class DBHandler extends SQLiteOpenHelper {
             do {
                 courseModalArrayList.add(new PromoList(cursorPromo.getInt(0),
                         cursorPromo.getString(2),
-                        cursorPromo.getString(7),
+                        cursorPromo.getInt(7),
                         cursorPromo.getString(3),
                         cursorPromo.getString(4),
                         cursorPromo.getString(5),
                         cursorPromo.getString(6)));
             } while (cursorPromo.moveToNext());
         }
-
+        System.out.println("SIZE COUNT: "+cursorPromo.getCount());
         cursorPromo.close();
         return courseModalArrayList;
     }

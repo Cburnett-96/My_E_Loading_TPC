@@ -19,8 +19,11 @@
     <string name="name_promo">Name Promo</string>
     <string name="logo">Network Logo</string>
     <string name="my_e_loading">My E-Loading</string>
-    <string name="current_balance">Current Balance:</string>
+    <string name="current_balance">Your Balance</string>
     <string name="loading">Loading...</string>
     <string name="_09">09</string>
     <string name="add_promo">Add Promo</string>
+    <string name="loading_promo_list">Loading Promo List</string>
+    <string name="version">Version</string>
+    <string name="refund">Refund</string>
 </resources>

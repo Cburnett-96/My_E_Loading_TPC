@@ -1,6 +1,7 @@
 package com.aqp.mye_loading;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Build;
@@ -36,7 +37,7 @@ public class AddPromoActivity extends AppCompatActivity {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.white_smoke));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.white_smoke));
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
@@ -62,10 +63,11 @@ public class AddPromoActivity extends AppCompatActivity {
             String Call = edtCall.getText().toString().trim();
             String Data = edtData.getText().toString().trim();
             String Validity = edtValidity.getText().toString().trim();
-            String Price = edtPrice.getText().toString().trim();
+            String PriceString = edtPrice.getText().toString().trim();
+            int Price = Integer.parseInt(PriceString);
 
             if (promoCode.isEmpty() || SMS.isEmpty() || Call.isEmpty() ||
-                    Data.isEmpty() || Validity.isEmpty() || Price.isEmpty()) {
+                    Data.isEmpty() || Validity.isEmpty()) {
                 Toast.makeText(AddPromoActivity.this, "Please enter all the data..", Toast.LENGTH_SHORT).show();
                 return;
             }

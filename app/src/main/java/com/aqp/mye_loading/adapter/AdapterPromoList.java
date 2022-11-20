@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aqp.mye_loading.GlobeTMProcessActivity;
 import com.aqp.mye_loading.other.DBHandler;
 import com.aqp.mye_loading.model.PromoList;
 import com.aqp.mye_loading.PromoProcessActivity;
@@ -41,14 +42,14 @@ public class AdapterPromoList extends RecyclerView.Adapter<AdapterPromoList.MyVi
     public void onBindViewHolder(@NonNull AdapterPromoList.MyViewHolder holder, int position) {
 
         String promocode = promoLists.get(position).getPromocode();
-        String price = promoLists.get(position).getPrice();
+        int price = promoLists.get(position).getPrice();
         String sms = promoLists.get(position).getSms();
         String call = promoLists.get(position).getCall();
         String data = promoLists.get(position).getData();
         String validity = promoLists.get(position).getValidity();
 
         holder.tvPromoCode.setText(promocode);
-        holder.tvPrice.setText(price);
+        holder.tvPrice.setText("₱"+price+".00");
         holder.tvSms.setText(sms);
         holder.tvCall.setText(call);
         holder.tvData.setText(data);
@@ -72,7 +73,7 @@ public class AdapterPromoList extends RecyclerView.Adapter<AdapterPromoList.MyVi
         });
 
         holder.layoutPromos.setOnClickListener(view -> {
-
+            //((Activity)holder.layoutPromos.getContext()).finish();
             String SMS = "SMS: " + promoLists.get(position).getSms() +
                     "\nCall: " + promoLists.get(position).getCall() +
                     "\nInternet Data: " + promoLists.get(position).getData() +
@@ -82,7 +83,7 @@ public class AdapterPromoList extends RecyclerView.Adapter<AdapterPromoList.MyVi
             intent.putExtra("number", Number);
             intent.putExtra("telecom", telecom);
             intent.putExtra("promoCode", promoLists.get(position).getPromocode());
-            intent.putExtra("price", promoLists.get(position).getPrice());
+            intent.putExtra("price", String.valueOf(promoLists.get(position).getPrice()));
             intent.putExtra("description", SMS);
             holder.layoutPromos.getContext().startActivity(intent);
         });

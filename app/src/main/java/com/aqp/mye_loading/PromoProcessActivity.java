@@ -1,6 +1,7 @@
 package com.aqp.mye_loading;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -21,15 +22,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aqp.mye_loading.other.DBHandler;
+import com.aqp.mye_loading.other.DBHandlerMustPromo;
+
 import java.util.Objects;
 
 public class PromoProcessActivity extends AppCompatActivity {
     String Number, PromoCode, telecom, Descriptions, Price;
     String ServerNumber = "8724";
+    int Price2;
 
     TextView textViewNumber, textViewPromo, textViewPrice, textViewPromoCode;
     Button btnSend, btnClose;
     ImageView imageViewTelecom;
+
+    private DBHandlerMustPromo dbHandler;
 
     @SuppressLint("ResourceType")
     @Override
@@ -43,7 +50,7 @@ public class PromoProcessActivity extends AppCompatActivity {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.white_smoke));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.white_smoke));
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
@@ -55,12 +62,15 @@ public class PromoProcessActivity extends AppCompatActivity {
         btnClose = findViewById(R.id.btn_close);
         imageViewTelecom = findViewById(R.id.imageViewTelecom);
 
+        dbHandler = new DBHandlerMustPromo(PromoProcessActivity.this);
+
         Intent intent = getIntent();
         Number = intent.getStringExtra("number");
         telecom = intent.getStringExtra("telecom");
         PromoCode = intent.getStringExtra("promoCode");
         Descriptions = intent.getStringExtra("description");
-        Price = "Total Price: "+intent.getStringExtra("price");
+        Price = "Total Price: "+ intent.getStringExtra("price");
+        Price2 = Integer.parseInt(intent.getStringExtra("price"));
 
         if (Objects.equals(telecom, "TNT") || Objects.equals(telecom, "Smart")){
             imageViewTelecom.setImageResource(R.raw.smart_tnt);
@@ -74,6 +84,7 @@ public class PromoProcessActivity extends AppCompatActivity {
         btnClose.setOnClickListener(v -> finish());
 
         btnSend.setOnClickListener(v -> Send());
+
     }
 
     private void Send(){
@@ -86,7 +97,7 @@ public class PromoProcessActivity extends AppCompatActivity {
         String SENT = "SMS_SENT";
         String DELIVERED = "SMS_DELIVERED";
 
-        PendingIntent sentPI = PendingIntent.getBroadcast(this, 0,
+        @SuppressLint("UnspecifiedImmutableFlag") PendingIntent sentPI = PendingIntent.getBroadcast(this, 0,
                 new Intent(SENT), 0);
 
         registerReceiver(new BroadcastReceiver(){
@@ -123,7 +134,7 @@ public class PromoProcessActivity extends AppCompatActivity {
             }
         }, new IntentFilter(SENT));
 
-        PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0,
+        @SuppressLint("UnspecifiedImmutableFlag") PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0,
                 new Intent(DELIVERED), 0);
 
         registerReceiver(new BroadcastReceiver(){
@@ -144,6 +155,8 @@ public class PromoProcessActivity extends AppCompatActivity {
                 }
             }
         }, new IntentFilter(DELIVERED));
+
+        dbHandler.addMustPromo(telecom, PromoCode, Descriptions, Price2);
 
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(ServerNumber, null, SMS, sentPI, deliveredPI);

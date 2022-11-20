@@ -64,6 +64,8 @@
                     android:layout_marginBottom="5dp"
                     android:text="Last Message Received from 8724"
                     android:textColor="@color/black"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:textStyle="bold" />
 
                 <EditText

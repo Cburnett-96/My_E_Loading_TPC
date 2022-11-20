@@ -1,72 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="10dp">
 
     <LinearLayout
         android:id="@+id/layoutPromos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/container"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:elevation="5dp"
-        android:translationZ="5dp"
-        android:orientation="vertical"
-        android:padding="5dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Promo Code:"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textViewPromoCode"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
-                android:gravity="center|start"
-                android:hint="Code"
-                android:textColor="#4285f4"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Price:"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textViewPrice"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:hint="Price"
-                android:textColor="#4285f4"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        android:padding="10dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,12 +21,41 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/ic_code"
+                    android:backgroundTint="@color/black"/>
+
+                <TextView
+                    android:id="@+id/textViewPromoCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|start"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20sp"
+                    android:hint="Code"
+                    android:autoSizeTextType="uniform"
+                    android:textColor="#4285f4"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/ic_sms"
                     android:backgroundTint="@color/black"/>
@@ -89,12 +63,12 @@
                 <TextView
                     android:id="@+id/textViewText"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center|start"
                     android:layout_marginStart="10dp"
                     android:hint="SMS"
+                    android:autoSizeTextType="uniform"
                     android:textColor="#4285f4"
-                    android:textSize="20sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -102,12 +76,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/ic_call"
                     android:backgroundTint="@color/black"/>
@@ -115,12 +90,12 @@
                 <TextView
                     android:id="@+id/textViewCall"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:hint="Call"
+                    android:autoSizeTextType="uniform"
                     android:gravity="center|start"
                     android:textColor="#4285f4"
-                    android:textSize="20sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -128,12 +103,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/ic_signal"
                     android:backgroundTint="@color/black"/>
@@ -141,14 +117,40 @@
                 <TextView
                     android:id="@+id/textViewData"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:hint="Data"
+                    android:autoSizeTextType="uniform"
                     android:gravity="center|start"
                     android:textColor="#4285f4"
-                    android:textSize="20sp"
                     android:textStyle="bold" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/ic_time"
+                    android:backgroundTint="@color/black"/>
+
+                <TextView
+                    android:id="@+id/textViewValidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:layout_marginStart="10dp"
+                    android:hint="Validity"
+                    android:gravity="center|start"
+                    android:textColor="#4285f4"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -158,35 +160,36 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="130dp"
-                    android:layout_height="50dp"
+                    android:layout_width="95dp"
+                    android:layout_height="25dp"
                     android:layout_weight="1"
                     android:layout_marginStart="10dp"
-                    android:background="@drawable/ic_time"
+                    android:background="@drawable/ic_price"
                     android:backgroundTint="@color/black"/>
 
                 <TextView
-                    android:id="@+id/textViewValidity"
+                    android:id="@+id/textViewPrice"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="10dp"
-                    android:hint="Validity"
                     android:gravity="center|start"
+                    android:layout_marginStart="10dp"
+                    android:hint="Price"
+                    android:autoSizeTextType="uniform"
                     android:textColor="#4285f4"
-                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btn_delete"
-                    android:layout_width="115dp"
-                    android:layout_height="30dp"
+                    android:layout_width="95dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/ic_delete"
                     android:contentDescription="@string/close"
                     app:backgroundTint="@color/black" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

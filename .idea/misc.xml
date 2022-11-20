@@ -3,56 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/back_select.xml" value="0.156" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/back_tabs.xml" value="0.156" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_back.xml" value="0.156" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_call.xml" value="0.156" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_exit.xml" value="0.156" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_sell.xml" value="0.156" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_signal.xml" value="0.156" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_sms.xml" value="0.156" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_time.xml" value="0.156" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/rounded_btn.xml" value="0.156" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_process.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_smart_tntactivity.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_globe_tm.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_globe_tm_regular.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_promo_load.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_regular_load.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_tab.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/layout/finalizing_load.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/Cburnett/AndroidStudioProjects/MyELoading/app/src/main/res/layout/list_promo.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/container.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_add.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_back.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_code.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_delete.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_exit.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_number.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_paste.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_person.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_price.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_share.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_undo.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/rounded_btn.xml" value="0.154" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_add_promo.xml" value="0.2" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/card.xml" value="0.1475" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/container.xml" value="0.1475" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/ic_description.xml" value="0.1475" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/rounded_btn.xml" value="0.1475" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/drawable/rounded_card.xml" value="0.1475" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_globe_tm_activity.xml" value="0.2" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_process.xml" value="0.2" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_promo_process.xml" value="0.2" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_refund.xml" value="0.2" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/activity_smart_tntactivity.xml" value="0.2" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_promo_load.xml" value="0.2" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_regular_load.xml" value="0.2" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/alert_input_number.xml" value="0.2" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/bottom_sheet_filter.xml" value="0.2" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_promo_load.xml" value="0.10208333333333333" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/content_regular_load.xml" value="0.17777777777777778" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/list_promo.xml" value="0.2" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/xml/provider_paths.xml" value="0.2" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/must_promo.xml" value="0.2" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/must_promo_list.xml" value="0.25" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/MyELoading/app/src/main/res/layout/testing_layout.xml" value="0.2" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
-  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

@@ -29,7 +29,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:contentDescription="@string/logo"
                 app:srcCompat="@raw/globe_tm_logo" />

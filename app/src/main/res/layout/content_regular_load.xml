@@ -26,19 +26,13 @@
             android:textSize="25sp"
             android:textStyle="bold" />
 
-        <HorizontalScrollView
-            android:id="@+id/scrollView"
+        <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                android:paddingStart="0dp"
-                android:paddingEnd="20dp">
+            app:justifyContent="center"
+            app:flexWrap="wrap"
+            app:alignItems="stretch"
+            app:alignContent="stretch">
 
                 <Button
                     android:id="@+id/btn_5"
@@ -130,9 +124,21 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:backgroundTint="@null" />
-            </LinearLayout>
 
-        </HorizontalScrollView>
+            <Button
+                android:id="@+id/btn_200"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/container"
+                android:text="200"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
+        </com.google.android.flexbox.FlexboxLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
