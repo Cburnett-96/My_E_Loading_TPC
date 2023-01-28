@@ -415,6 +415,27 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_DitoT"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:background="@drawable/rounded_btn"
+                    android:text="Dito"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white_smoke"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/dark_red" />
+
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btn_closeTelecom"
                 style="?android:attr/buttonBarButtonStyle"
@@ -645,6 +666,22 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:backgroundTint="#f9f500" />
+
+            <Button
+                android:id="@+id/btn_Dito"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_btn"
+                android:text="Dito"
+                android:textAllCaps="false"
+                android:textColor="@color/white_smoke"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/dark_red" />
 
             <Button
                 android:id="@+id/btn_closePromo"

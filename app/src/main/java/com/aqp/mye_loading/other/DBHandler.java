@@ -108,6 +108,8 @@ public class DBHandler extends SQLiteOpenHelper {
             cursorPromo = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE telecom = 'TNT'", null);
         } else if (Objects.equals(telco, "Smart")){
             cursorPromo = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE telecom = 'Smart'", null);
+        } else if (Objects.equals(telco, "Dito")){
+            cursorPromo = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE telecom = 'Dito'", null);
         } else {
             cursorPromo = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         }

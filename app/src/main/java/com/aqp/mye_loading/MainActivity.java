@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
     private static final int CONTACT_PICKER_RESULT = 111;
     Button btnExit, btnNextToProcess, btnRefund, btnContacts, btnNextToProcessContact, btnClose, btnAddPromo,
-            btnClosePromo, btnCloseTelecom, btnGlobe, btnSmart, btnTM, btnTNT, btnGlobeT, btnSmartT, btnTMT, btnTNTT,
+            btnClosePromo, btnCloseTelecom, btnGlobe, btnSmart, btnTM, btnTNT, btnGlobeT, btnDito, btnSmartT, btnTMT, btnTNTT, btnDitoT,
             btnGithub, btnShare;
     EditText eTNumber, eTContactNumber;
     TextView tvContactName, tvBalance, tvVersion, tvNoPromo;
@@ -106,11 +106,13 @@ public class MainActivity extends AppCompatActivity {
         btnGlobe = findViewById(R.id.btn_Globe);
         btnSmart = findViewById(R.id.btn_Smart);
         btnTM = findViewById(R.id.btn_TM);
+        btnDito = findViewById(R.id.btn_Dito);
         btnTNT = findViewById(R.id.btn_TNT);
         btnGlobeT = findViewById(R.id.btn_GlobeT);
         btnSmartT = findViewById(R.id.btn_SmartT);
         btnTMT = findViewById(R.id.btn_TMT);
         btnTNTT = findViewById(R.id.btn_TNTT);
+        btnDitoT = findViewById(R.id.btn_DitoT);
         btnCloseTelecom = findViewById(R.id.btn_closeTelecom);
         eTContactNumber = findViewById(R.id.editTextContactNumber);
         tvContactName = findViewById(R.id.textView_ContactName);
@@ -251,6 +253,14 @@ public class MainActivity extends AppCompatActivity {
             layoutTelecom.setVisibility(View.GONE);
             layoutMain.setVisibility(View.VISIBLE);
         });
+        btnDitoT.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, DitoActivity.class);
+            intent.putExtra("number", Number.replace(" ", ""));
+            intent.putExtra("telecom", "Dito");
+            startActivity(intent);
+            layoutTelecom.setVisibility(View.GONE);
+            layoutMain.setVisibility(View.VISIBLE);
+        });
     }
 
     private void validateNumberContact() {
@@ -301,6 +311,14 @@ public class MainActivity extends AppCompatActivity {
             layoutTelecom.setVisibility(View.GONE);
             layoutMain.setVisibility(View.VISIBLE);
         });
+        btnDitoT.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, DitoActivity.class);
+            intent.putExtra("number", ContactNumber.replace(" ", ""));
+            intent.putExtra("telecom", "Dito");
+            startActivity(intent);
+            layoutTelecom.setVisibility(View.GONE);
+            layoutMain.setVisibility(View.VISIBLE);
+        });
     }
 
     private void AddPromo() {
@@ -332,7 +350,13 @@ public class MainActivity extends AppCompatActivity {
             layoutAddPromo.setVisibility(View.GONE);
             layoutMain.setVisibility(View.VISIBLE);
         });
-
+        btnDito.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, AddPromoActivity.class);
+            intent.putExtra("telecom", "Dito");
+            startActivity(intent);
+            layoutAddPromo.setVisibility(View.GONE);
+            layoutMain.setVisibility(View.VISIBLE);
+        });
 
     }
 

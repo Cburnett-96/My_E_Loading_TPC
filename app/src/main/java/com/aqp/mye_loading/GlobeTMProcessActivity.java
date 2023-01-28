@@ -257,8 +257,6 @@ public class GlobeTMProcessActivity extends AppCompatActivity {
                 switch (getResultCode())
                 {
                     case Activity.RESULT_OK:
-                        Toast.makeText(getBaseContext(), "Message Sent!",
-                                Toast.LENGTH_SHORT).show();
                         new Handler().postDelayed(() -> finish(), 1000);
                         break;
                     case SmsManager.RESULT_ERROR_GENERIC_FAILURE:

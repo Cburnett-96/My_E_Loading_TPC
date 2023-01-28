@@ -44,7 +44,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class SmartTNTActivity extends AppCompatActivity {
+public class DitoActivity extends AppCompatActivity {
     private ArrayList<PromoList> promoLists;
     private DBHandler dbHandler;
     private DBHandlerMustPromo dbHandlerMustPromo;
@@ -69,7 +69,7 @@ public class SmartTNTActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
         Objects.requireNonNull(getSupportActionBar()).hide(); // hide the title bar
-        setContentView(R.layout.activity_smart_tntactivity);
+        setContentView(R.layout.activity_dito);
 
         if (Build.VERSION.SDK_INT >= 23) {
             Window window = this.getWindow();
@@ -107,8 +107,8 @@ public class SmartTNTActivity extends AppCompatActivity {
         itemPromo = findViewById(R.id.itemPromo);
 
         def = itemPromo.getTextColors();
-        dbHandler = new DBHandler(SmartTNTActivity.this);
-        dbHandlerMustPromo = new DBHandlerMustPromo(SmartTNTActivity.this);
+        dbHandler = new DBHandler(DitoActivity.this);
+        dbHandlerMustPromo = new DBHandlerMustPromo(DitoActivity.this);
 
         floatingActionButton.setOnClickListener(this::FilterPromo);
 
@@ -168,7 +168,7 @@ public class SmartTNTActivity extends AppCompatActivity {
         view.getContext();
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View showFilter = inflater.inflate(R.layout.bottom_sheet_filter, null);
-        bottomSheetDialog = new BottomSheetDialog(SmartTNTActivity.this);
+        bottomSheetDialog = new BottomSheetDialog(DitoActivity.this);
         bottomSheetDialog.setContentView(showFilter);
         bottomSheetDialog.show();
 
@@ -228,7 +228,7 @@ public class SmartTNTActivity extends AppCompatActivity {
         Promo = "Regular Load "+edtAmount.getText().toString().trim();
 
         if (TextUtils.isEmpty(edtAmount.getText())){
-            Toast.makeText(SmartTNTActivity.this, "Input or Choose Amount", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DitoActivity.this, "Input or Choose Amount", Toast.LENGTH_SHORT).show();
         } else {
             textViewNumberFinal.setText(Number);
             textViewPromo.setText(Promo);

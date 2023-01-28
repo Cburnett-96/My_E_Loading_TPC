@@ -75,6 +75,9 @@ public class PromoProcessActivity extends AppCompatActivity {
         if (Objects.equals(telecom, "TNT") || Objects.equals(telecom, "Smart")){
             imageViewTelecom.setImageResource(R.raw.smart_tnt);
         }
+        if (Objects.equals(telecom, "Dito")){
+            imageViewTelecom.setImageResource(R.raw.dito);
+        }
 
         textViewNumber.setText(Number);
         textViewPromo.setText(Descriptions);
@@ -106,8 +109,6 @@ public class PromoProcessActivity extends AppCompatActivity {
                 switch (getResultCode())
                 {
                     case Activity.RESULT_OK:
-                        Toast.makeText(getBaseContext(), "Message Sent!",
-                                Toast.LENGTH_LONG).show();
                         new Handler().postDelayed(() -> finish(), 2000);
                         break;
                     case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
