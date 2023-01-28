@@ -26,6 +26,9 @@ Gateway used as of now: 8724
 ## Screenshots 
 <img src="https://github.com/Cburnett-96/My_E_Loading_TPC/blob/master/screenshoot/myeloading_new.jpeg?raw=true" alt="drawing" width="320"  />
 
+## Released 
+https://github.com/Cburnett-96/My_E_Loading_TPC/releases
+
 ### About App:
 
 Versioning: #.#.## [Main Release].[Main Features].[Total of Java class]
