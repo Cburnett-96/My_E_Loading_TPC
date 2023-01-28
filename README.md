@@ -14,7 +14,7 @@ This android app is not recognized by TPC. The app was developed as a resource 
   - Must brought load/promo (Highlights Promos)
   - Sorting promo list (A-Z and Low-High vice-versa)
   
-Telecom Promo Available as of now: Globe, TM, TNT and Smart. (Regular Load any Telecom)
+Telecom Promo Available as of now: Globe, TM, Dito, TNT and Smart. (Regular Load any Telecom)
 
 ## Permissions used:
 
